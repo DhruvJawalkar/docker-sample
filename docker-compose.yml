@@ -1,12 +1,18 @@
 version: "3.9"
+   
 services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    ports:
-      - "5000:5000"
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-    environment:
-      FLASK_ENV: development
-  redis:
-    image: "redis:alpine"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
