@@ -1,0 +1,32 @@
+Redis notes
+SET key value
+GET key
+
+set with expiry 
+SETEX key seconds value
+PSETEX key millisecond value
+
+STRLEN key
+
+set multiple string values
+MSET key1 value1 key2 value2
+MGET key1 key2
+
+push list
+LPUSH key value1 value2 …
+
+add set
+SADD key value
+
+add sorted set, sorted according to scores in ascending order
+ZADD key score value …
+
+to store hashes, key : {field : value}
+HMSET key field value
+
+Redis as a message queue
+SUBSCRIBE channel
+PUBLISH channel message
+
+RDB persistence(snapshotting)
+save 900 1 (save after 900 secs if at least 1 key changed) 
